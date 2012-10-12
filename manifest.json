@@ -1,0 +1,29 @@
+{
+  "name": "Qiita extension",
+  "version": "0.0.1",
+  "description": "To be specified",
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "page_action":{
+    "default_icon": "q.png",
+    "default_title": "I love qiita!"
+  },
+  "content_scripts": [
+    {"matches" : [
+        "http://qiita.com/*",
+        "https://qiita.com/*"
+      ],
+      "js": ["lib/jquery-1.8.2.min.js", "content_script.js"],
+      "run_at": "document_idle"
+    },
+    {"matches" : [
+        "http://qiita.com/recommended_users"
+      ],
+      "js": ["lib/jquery-1.8.2.min.js", "qiita_util.js",
+        "recommended_users.js"],
+      "css": ["mystyle.css"],
+      "run_at": "document_idle"
+    }
+  ]
+}
